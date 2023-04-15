@@ -23,12 +23,13 @@ function App() {
     }
 
     const toggleComleteTodo = (todoId) => {
-setTodos(todo => {
+setTodos(todos.map(todo => {
     if (todo.id !== todoId) return todo;
     return {
+    }}
+))
     }
-})
-    }
+    
 
  return <div className="App">
     <label htmlFor="">
