@@ -5,13 +5,33 @@
 
 .delete{
   color: red;
+background-color: rgba(255, 0, 0, 0.2);
   cursor: pointer;
+  border: 1px #c10000 solid;
+  border-radius: 10px;
 }
-
+.text{
+  border-radius: 10px;
+  background-color: rgb(242, 188, 117);
+  padding: 10px;
+  line-height: 10px;
+}
 .checkbox{
   cursor: pointer;
 }
 
 ul{
   list-style: none;
+}
+
+li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+input:checked + p {
+  background-color: black;
+  transition: 1s;
 }
