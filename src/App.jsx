@@ -20,9 +20,12 @@ function App() {
     }
 
     const removeTodo = (todoId) => {
-        setTodos(todo => todo.id !== todoId)
+        setTodos(todos.filter(todo => todo.id !== todoId))
     }
 
+
+
+    
 
 
 return <div className="App">
@@ -35,7 +38,7 @@ return <div className="App">
 
         {todos.map(
             todo => <li key={todo.id}>
-                <input type="checkbox" />
+                <input type="checkbox" checked onChange={}/>
                 <span>{todo.text}</span>
                 <span onClick={() => removeTodo(todo.id)} className='delete'>&times;</span>
             </li>
