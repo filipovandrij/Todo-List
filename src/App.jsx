@@ -19,23 +19,31 @@ function App() {
         setText('')
     }
 
+    const removeTodo = (todoId) => {
+        setTodos(todo => todo.id !== todoId)
+    }
 
-console.log(todos)
+
 
 return <div className="App">
     <label htmlFor="">
-        <input type={text} onChange={(e) => setTodos(e.target.value)} />
+        <input type={text} onChange={(e) => setText(e.target.value)} />
         <button onClick={() => addTodo()}>add task</button>
     </label>
     <ul>
-        <li>
-            <input type="checkbox" />
-            <span>text</span>
-            <span className='delete'>&times;</span>
-        </li>
+
+
+        {todos.map(
+            todo => <li key={todo.id}>
+                <input type="checkbox" />
+                <span>{todo.text}</span>
+                <span onClick={() => removeTodo(todo.id)} className='delete'>&times;</span>
+            </li>
+        )}
     </ul>
 </div>
 
 }
 
 export default App
+
