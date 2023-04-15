@@ -25,7 +25,23 @@ function App() {
 
 
 
-    
+    const toggleTodoComlete = (todoId) => {
+        setTodos(
+            todos.map(todo =>{ 
+                if (todo.id !== todoId) return todo;
+            
+                return{
+                    ...todo,
+                    completed: !todo.completed,
+                }
+            }
+            )
+        )
+    }
+
+
+
+
 
 
 return <div className="App">
@@ -38,7 +54,7 @@ return <div className="App">
 
         {todos.map(
             todo => <li key={todo.id}>
-                <input type="checkbox" checked onChange={}/>
+                <input type="checkbox" checked onChange={() => toggleTodoComlete(todo.id)}/>
                 <span>{todo.text}</span>
                 <span onClick={() => removeTodo(todo.id)} className='delete'>&times;</span>
             </li>
