@@ -26,9 +26,13 @@ function App() {
 setTodos(todos.map(todo => {
     if (todo.id !== todoId) return todo;
     return {
+        ...todo,
+        comleted: !todo.comleted,
+
     }}
 ))
     }
+    
     
 
  return <div className="App">
