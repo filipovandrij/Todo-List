@@ -1,18 +1,28 @@
-const TaskList = ({ toggleComleteTodo, removeTodo, todos }) => {
+import { useSelector, useDispatch } from 'react-redux'
+import { removeTodo, toggleTodo } from '../redux/todoSlice'
+
+const TaskList = () => {
+    const task = useSelector((state) => state.todos.todos)
+
+    const dispatch = useDispatch()
+
+    console.log(task)
+
     return (
         <ul>
-            {todos.map((todo) => (
-                <li key={todo.id}>
+            {task.map(({ id, text, completed, important }) => (
+                <li key={id}>
                     <input
-                        checked={todo.comleted}
-                        onChange={() => toggleComleteTodo(todo.id)}
                         className="checkbox"
                         type="checkbox"
+                        checked={completed}
+                        onChange={() => dispatch(toggleTodo({ id }))}
                     />
-                    <p className="text">{todo.text}</p>
+                    <span className={important}></span>
+                    <p className="text">{text}</p>
                     <button
                         className="delete"
-                        onClick={() => removeTodo(todo.id)}
+                        onClick={() => dispatch(removeTodo({ id }))}
                     >
                         &times;
                     </button>

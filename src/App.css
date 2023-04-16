@@ -31,7 +31,25 @@ li{
   gap: 20px;
 }
 
-input:checked + p {
+input:checked .text {
   background-color: black;
   transition: 1s;
 }
+
+.important{
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: red;
+}
+
+.medium{
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: blue;}
+.not-important{
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: green;}
