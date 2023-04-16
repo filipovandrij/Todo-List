@@ -18,8 +18,8 @@ const TaskList = () => {
                         checked={completed}
                         onChange={() => dispatch(toggleTodo({ id }))}
                     />
-                    <span className={important}></span>
                     <p className="text">{text}</p>
+                    <span className={important}></span>
                     <button
                         className="delete"
                         onClick={() => dispatch(removeTodo({ id }))}
