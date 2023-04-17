@@ -31,12 +31,12 @@ li{
   gap: 20px;
 }
 
-input:checked + p {
+input:checked + input {
   background-color: black;
   
   transition: 1s;
 }
-input:checked  + p + span { 
+input:checked  + input + span { 
   opacity: 0;
   transition: 5s;
 }
