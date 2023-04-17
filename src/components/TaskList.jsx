@@ -1,10 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { removeTodo, toggleTodo } from '../redux/todoSlice'
+import { removeTodo, toggleTodo, changeText } from '../redux/todoSlice'
+import { useState } from 'react'
 
 const TaskList = () => {
     const task = useSelector((state) => state.todos.todos)
 
     const dispatch = useDispatch()
+
+    const [editingTaskId, setEditingTaskId] = useState('')
+    const [editedTaskText, setEditedTaskText] = useState('')
+
+    const handleTaskChange = (event, id) => {
+        const newTaskText = event.target.value
+
+        setEditingTaskId(id)
+        setEditedTaskText(newTaskText)
+        dispatch(changeText({ id, text: newTaskText }))
+    }
 
     console.log(task)
 
@@ -18,7 +30,12 @@ const TaskList = () => {
                         checked={completed}
                         onChange={() => dispatch(toggleTodo({ id }))}
                     />
-                    <p className="text">{text}</p>
+                    <input
+                        type="text"
+                        value={id === editingTaskId ? editedTaskText : text}
+                        className="text"
+                        onChange={(event) => handleTaskChange(event, id)}
+                    />
                     <span className={important}></span>
                     <button
                         className="delete"

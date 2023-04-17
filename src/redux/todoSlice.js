@@ -25,9 +25,15 @@ export const todoSlice = createSlice({
             )
             toggledTodoComplete.completed = !toggledTodoComplete.completed
         },
+        changeText(state, action) {
+            const changeTodoText = state.todos.find(
+                (todo) => todo.id === action.payload.id
+            )
+            changeTodoText.text = action.payload.text
+        },
     },
 })
 
-export const { removeTodo, addTodo, toggleTodo } = todoSlice.actions
+export const { removeTodo, addTodo, toggleTodo, changeText } = todoSlice.actions
 
 export default todoSlice.reducer
