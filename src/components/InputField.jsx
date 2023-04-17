@@ -14,18 +14,19 @@ const InputField = () => {
 
     return (
         <div>
+            <h3>Create Task</h3>
             <label htmlFor="">
                 <select onChange={(e) => setImportant(e.target.value)}>
-                    <option value="important">Important</option>
-                    <option value="medium">Medium</option>
-                    <option value="not-important">Not-important</option>
+                    <option value="important">IMPORTANT</option>
+                    <option value="medium">MEDIUM</option>
+                    <option value="not-important">NOT-IMPORTANT</option>
                 </select>
                 <input
                     type="text"
                     value={text}
                     onChange={(e) => setTextValue(e.target.value)}
                 />
-                <button onClick={() => addTask()}>add task</button>
+                <button onClick={() => addTask()}>DONE</button>
             </label>
         </div>
     )

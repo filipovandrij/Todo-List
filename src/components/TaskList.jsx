@@ -22,6 +22,7 @@ const TaskList = () => {
 
     return (
         <ul>
+            <h3>To-do list</h3>
             {task.map(({ id, text, completed, important }) => (
                 <li key={id}>
                     <input
