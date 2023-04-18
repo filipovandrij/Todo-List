@@ -31,14 +31,17 @@ li{
   gap: 20px;
 }
 
-input:checked + input {
+input:checked + .this_text {
   background-color: black;
   
   transition: 1s;
 }
-input:checked  + input + span { 
-  opacity: 0;
-  transition: 5s;
+.this_text{
+  width: 800px;
+}
+
+.new_task{
+  margin-top: 10px;
 }
 
 .important{
@@ -58,6 +61,13 @@ input:checked  + input + span {
   height: 15px;
   border-radius: 10px;
   background-color: green;
+}
+
+
+.create_form{
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 

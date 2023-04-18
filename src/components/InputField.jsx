@@ -22,11 +22,13 @@ const InputField = () => {
     }
 
     return (
-        <Box
-            sx={{ maxWidth: 1200, margin: '20px auto' }}
-            className="create_form"
-        >
-            <FormControl fullWidth sx={{ display: 'flex' }}>
+        <Box sx={{ maxWidth: 1200, margin: '20px auto' }}>
+            <h2>CREATE YOUR TASK</h2>
+            <FormControl
+                fullWidth
+                sx={{ display: 'flex' }}
+                className="create_form"
+            >
                 <InputLabel id="demo-simple-select-label">Priority</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
