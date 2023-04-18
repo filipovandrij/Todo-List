@@ -21,6 +21,7 @@ background-color: rgba(255, 0, 0, 0.2);
 }
 
 ul{
+  padding: 0;
   list-style: none;
 }
 
