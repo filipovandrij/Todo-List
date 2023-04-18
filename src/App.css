@@ -59,3 +59,9 @@ input:checked  + input + span {
   border-radius: 10px;
   background-color: green;
 }
+
+
+.MuiFormControl-root{
+  display: flex;
+  justify-content: center;
+}
