@@ -11,7 +11,17 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 
-const InputField = () => {
+export const priorityColorList = {
+    important: {
+        name: 'important',
+        title: 'IMPORTANT',
+        color: 'error',
+    },
+    low: { name: 'low', title: 'LOW', color: 'primary' },
+    medium: { name: 'medium', title: 'MEDIUM', color: 'success' },
+}
+
+export const InputField = () => {
     const [text, setTextValue] = useState('')
     const [important, setImportant] = useState('')
     const dispatch = useDispatch()
@@ -36,9 +46,15 @@ const InputField = () => {
                     label="Priority"
                     onChange={(e) => setImportant(e.target.value)}
                 >
-                    <MenuItem value="important">IMPORTANT</MenuItem>
-                    <MenuItem value="medium">MEDIUM</MenuItem>
-                    <MenuItem value="not-important">NOT-IMPORTANT</MenuItem>
+                    <MenuItem value={priorityColorList.important.name}>
+                        {priorityColorList.important.title}
+                    </MenuItem>
+                    <MenuItem value={priorityColorList.medium.name}>
+                        {priorityColorList.medium.title}
+                    </MenuItem>
+                    <MenuItem value={priorityColorList.low.name}>
+                        {priorityColorList.low.title}
+                    </MenuItem>
                 </Select>
                 <TextField
                     label="Task name"
@@ -54,4 +70,3 @@ const InputField = () => {
         </Box>
     )
 }
-export default InputField

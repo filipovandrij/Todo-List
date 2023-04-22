@@ -3,56 +3,57 @@ import { removeTodo, toggleTodo, changeText } from '../redux/todoSlice'
 import FlagIcon from '@mui/icons-material/Flag'
 import { TextareaAutosize, Button } from '@mui/material'
 import { useState } from 'react'
+import { priorityColorList } from './InputField'
 
 const TaskList = () => {
-    const task = useSelector((state) => state.todos.todos)
+    const todos = useSelector((state) => state.todos.todos)
 
     const dispatch = useDispatch()
+    const [task, setTask] = useState({ editingTaskId: '', editedTaskText: '' })
 
-    const [editingTaskId, setEditingTaskId] = useState('')
-    const [editedTaskText, setEditedTaskText] = useState('')
+    const handleTaskChange = (editingTaskId) => (event) => {
+        const editedTaskText = event.target.value
 
-    const handleTaskChange = (event, id) => {
-        const newTaskText = event.target.value
-
-        setEditingTaskId(id)
-        setEditedTaskText(newTaskText)
-        dispatch(changeText({ id, text: newTaskText }))
+        setTask({ editingTaskId, editedTaskText })
+        dispatch(changeText({ id: editingTaskId, text: editedTaskText }))
     }
 
-    const changePriority = (value) => {
-        if (value === 'important') return 'error'
-        else if (value === 'not-important') return 'success'
-        else return 'primary'
+    const handleChangeTaskComplete = (id) => () => {
+        dispatch(toggleTodo({ id }))
     }
-    console.log(task)
+
+    const handleDeleteTask = (id) => () => {
+        dispatch(removeTodo({ id }))
+    }
 
     return (
         <ul>
             <h2>YOUR TASKS</h2>
-            {task.map(({ id, text, completed, important }) => (
+            {todos.map(({ id, text, completed, important }) => (
                 <li className="new_task" key={id}>
                     <input
                         className="checkbox"
                         type="checkbox"
                         checked={completed}
-                        onChange={() => dispatch(toggleTodo({ id }))}
+                        onChange={handleChangeTaskComplete(id)}
                     />
 
                     <TextareaAutosize
                         className="this_text"
                         minRows={5}
                         defaultValue={
-                            id === editingTaskId ? editedTaskText : text
+                            id === task.editingTaskId
+                                ? task.editedTaskText
+                                : text
                         }
                         variant="filled"
-                        onChange={(event) => handleTaskChange(event, id)}
+                        onChange={handleTaskChange(id)}
                     />
-                    <FlagIcon color={changePriority(important)} />
+                    <FlagIcon color={priorityColorList[important].color} />
                     <Button
                         variant="outlined"
                         color="error"
-                        onClick={() => dispatch(removeTodo({ id }))}
+                        onClick={handleDeleteTask(id)}
                     >
                         DELETE
                     </Button>
